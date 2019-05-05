@@ -1,0 +1,107 @@
+---
+title: "Syntax"
+---
+
+# Test
+
+## Literals
+
+Everything in Krill can be boiled down to these values.
+
+| Literal | Sample Values      |
+|:--------|--------------------|
+| Numbers | `1`, `1.5`         |
+| Strings | `"hello"`          |
+| Chars   | `'a'`              |
+| Bools   | `true`, `false`    |
+| Atoms   | `:hello`, `:world` |
+| Unit    | `()`               |
+
+The unit value is like the `null` value in other languages. It is often used
+when a lambda does not return anything.
+
+## Variables
+
+You can define variables easily
+
+```haskell
+x = 2
+```
+
+Variables are immutable
+
+```haskell
+x = 2
+x = 1 # Error: Variable `x` Already Bound
+```
+
+## Lambdas
+
+There are no top level functions in krill, only lambas. A lambda is a set of
+space separated parameters followed by an arrow `->`. The body of a function is
+a block. A block is an expression, or multiple expressions inside some curlies
+`{}`. For example, the following two lambdas are equivalent.
+
+```
+add1 = a b -> a + b
+
+add2 = a b -> {
+  result = a + b
+  result
+}
+```
+
+The last expression in a block is returned.
+
+You can create a lambda that accepts no parameters by using the underscore and
+calling it with the unit value.
+
+```haskell
+printHello = _ -> print "hello"
+printHello ()
+# => "hello"
+```
+
+## Lists
+
+Lists are as you expect
+
+```haskell
+l = [1,2,3]
+l[1]
+# => 2
+```
+
+You can also creates lists with ranges that work the same way as in Haskell.
+
+```haskell
+[1..10]
+# => [1,2,3,4,5,6,7,8,9,10]
+
+[1,3..10]
+# => [1,3,5,7,9]
+```
+
+## Ifs
+
+Since everything in krill is an expression, if's must return a value, meaning
+the else block must be provided.
+
+```haskell
+if x == 2 then "x is two!" else {
+  "x is not two."
+}
+```
+
+## For Loops
+
+You can loop over lists with the for in syntax.
+
+```haskell
+for i in [1..5] { print i }
+# => 1
+# => 2
+# => 3
+# => 4
+# => 5
+```

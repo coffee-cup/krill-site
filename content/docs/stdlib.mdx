@@ -1,0 +1,16 @@
+---
+title: "Standard Library"
+---
+
+There is a standard library that is always loaded first. The library is small
+and can be found [here](https://github.com/coffee-cup/krill/blob/master/stdlib/core.kr).
+
+## print
+
+Print the argument to standard out.
+
+```hs
+print :: a -> ()
+print $ [1,2] ++ " hello"
+# => [1,2] hello
+```

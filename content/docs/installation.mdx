@@ -1,0 +1,25 @@
+---
+title: "Installation"
+---
+
+# Installation
+
+Build it yourself with [Haskell](https://www.haskell.org/).
+
+1.  Install [Stack](https://docs.haskellstack.org/en/stable/README/), which we will use to compile the Haskell code.
+2.  Clone the repository and `cd` into the directory.
+3.  Run `stack setup` to download the correct version of GHC.
+4.  Run `stack install --local-bin-path=out/build` to build the application.
+5.  Copy the application binary at `out/build/krill` to wherever you need it to go.
+
+# Usage
+
+## Repl
+
+Running `krill` with no arguments will launch a repl. You can `.help` in the
+repl for a list of available commands. Commands are all prefixed with the `.`.
+Exit the repl with `.q`.
+
+## Run a file
+
+You can run a file with `krill path/to/file.kr`.
