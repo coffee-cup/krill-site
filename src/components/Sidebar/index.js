@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import Link from "../Link";
-import { H1 } from "../Header";
 import Text from "../Text";
 import Box from "../Box";
+import Logo from "../Logo";
 import { useStaticQuery, graphql } from "gatsby";
 import { makeAnchor } from "../../utils";
 import { sidebarWidth } from "../../styles";
@@ -19,7 +19,7 @@ const StyledSidebar = styled(Box)`
 
 const PageHeading = props => (
   <Box py={1}>
-    <Text fontSize={4}>
+    <Text fontSize={4} fontWeight={600}>
       <Link to={props.to} color={`${props.active ? "secondary" : "text"}`}>
         {props.children}
       </Link>
@@ -63,6 +63,13 @@ const Section = props => (
       )}
   </Box>
 );
+
+const LogoButton = () => (
+  <Box display="flex" alignItems="center">
+    <Logo />
+  </Box>
+);
+
 const Sidebar = () => {
   const data = useStaticQuery(query);
   const pages = data.allMdx.nodes;
@@ -72,11 +79,13 @@ const Sidebar = () => {
     <StyledSidebar
       minWidth={[0, sidebarWidth]}
       px={3}
-      py={4}
+      pt={4}
+      pb={4}
       bg="primary"
       className="sidebar"
     >
       <Box>
+        <LogoButton />
         <Section
           slug="/"
           headings={[{ value: "Introduction", depth: 1 }]}

@@ -37,7 +37,7 @@ const Home = ({ data }) => {
           <Text>
             Krill was created as an experiement to learn about programming
             language design. Head to{" "}
-            <Link to="/getting-started/">getting started</Link> to learn more
+            <Link to="/getting-started/">getting started</Link> to learn more.
           </Text>
         </Box>
       </Box>
