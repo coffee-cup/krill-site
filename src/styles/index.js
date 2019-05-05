@@ -1,7 +1,7 @@
 export const theme = {
   colors: {
     text: "#333",
-    bg: "snow",
+    bg: "white",
     primary: "#ebebeb",
     secondary: "hotpink",
   },
