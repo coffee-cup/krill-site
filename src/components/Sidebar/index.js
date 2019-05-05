@@ -20,28 +20,30 @@ const Item = props => (
   </Box>
 );
 
-const Sidebar = props => {
+const Sidebar = () => {
   const data = useStaticQuery(query);
   const pages = data.allMdx.nodes;
 
   return (
     <StyledSidebar
-      minWidth={[0, 250]}
+      minWidth={[0, 280]}
       px={3}
       py={4}
       bg="primary"
       className="sidebar"
     >
-      <Text fontSize={5} fontWeight="bold">
-        <Link to="/" color="text">
-          Krill
-        </Link>
-      </Text>
-      {pages.map(node => (
-        <Item key={node.fields.slug} to={node.fields.slug}>
-          {node.frontmatter.title}
-        </Item>
-      ))}
+      <Box>
+        <Text fontSize={5} fontWeight="bold">
+          <Link to="/" color="text">
+            Krill
+          </Link>
+        </Text>
+        {pages.map(node => (
+          <Item key={node.fields.slug} to={node.fields.slug}>
+            {node.frontmatter.title}
+          </Item>
+        ))}
+      </Box>
     </StyledSidebar>
   );
 };

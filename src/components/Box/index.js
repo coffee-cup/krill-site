@@ -5,8 +5,11 @@ import {
   width,
   minWidth,
   fontSize,
+  display,
   flex,
-  alignSelf,
+  flexDirection,
+  alignItems,
+  justifyContent,
   order,
 } from "styled-system";
 
@@ -20,8 +23,11 @@ const Box = styled.div(
   width,
   minWidth,
   fontSize,
+  display,
   flex,
-  alignSelf,
+  flexDirection,
+  alignItems,
+  justifyContent,
   order,
 );
 

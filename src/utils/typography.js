@@ -1,7 +1,10 @@
 import Typography from "typography";
-import GithubTheme from "typography-theme-github";
+import theme from "typography-theme-github";
 
-const typography = new Typography(GithubTheme);
+theme.headerFontFamily = ["Montserrat", ...theme.headerFontFamily];
+theme.headerWeight = 700;
+
+const typography = new Typography(theme);
 
 // Hot reload typography in development.
 if (process.env.NODE_ENV !== `production`) {

@@ -6,7 +6,7 @@ import Layout from "../components/Layout";
 import Box from "../components/Box";
 import Text from "../components/Text";
 import Link from "../components/Link";
-import { H1 } from "../components/Header";
+import { Title } from "../components/Header";
 
 const frontExample = `
 odd = x -> x % 2 != 0
@@ -25,7 +25,7 @@ const Home = ({ data }) => {
         keywords={[`blog`, `gatsby`, `javascript`, `react`]}
       />
       <Box>
-        <H1>Krill</H1>
+        <Title mt={5}>Krill</Title>
         <Box>
           Immutable, curried, and minimal programming language. Find the
           implementation on{" "}

@@ -1,12 +1,13 @@
-import React from "react";
+import Box from "../components/Box";
 import PropTypes from "prop-types";
+import React from "react";
+import Sidebar from "../components/Sidebar";
+import Text from "../components/Text";
+import styled from "styled-components";
+import { H1, H2, H3 } from "../components/Header";
+import { MDXProvider } from "@mdx-js/react";
 import { ThemeProvider, createGlobalStyle } from "styled-components";
 import { theme } from "../styles";
-import { H1, H2, H3 } from "../components/Header";
-import Text from "../components/Text";
-import Sidebar from "../components/Sidebar";
-import { MDXProvider } from "@mdx-js/react";
-import styled from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -21,12 +22,9 @@ const components = {
   h3: H3,
 };
 
-const Wrapper = styled.div`
-  display: flex;
-`;
-
 const Content = styled.div`
   width: 100%;
+  min-height: 100%;
   max-width: 70ch;
   margin: 0 auto;
 `;
@@ -37,10 +35,10 @@ const Layout = ({ children }) => {
       <ThemeProvider theme={theme}>
         <>
           <GlobalStyle />
-          <Wrapper>
+          <Box display="flex" className="wrapper">
             <Sidebar />
             <Content className="content">{children}</Content>
-          </Wrapper>
+          </Box>
         </>
       </ThemeProvider>
     </MDXProvider>

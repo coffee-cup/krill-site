@@ -16,8 +16,6 @@ const Docs = ({ data }) => {
     <Layout title={siteTitle}>
       <SEO title={post.frontmatter.title} />
       <Box p={4}>
-        <h1>{post.frontmatter.title}</h1>
-        <p>{post.frontmatter.date}</p>
         <MDXRenderer>{post.code.body}</MDXRenderer>
       </Box>
     </Layout>
