@@ -1,6 +1,8 @@
 import Typography from "typography";
+import CodePlugin from "typography-plugin-code";
 import theme from "typography-theme-github";
 
+theme.plugins = [new CodePlugin()];
 theme.headerFontFamily = ["Montserrat", ...theme.headerFontFamily];
 theme.headerWeight = 700;
 

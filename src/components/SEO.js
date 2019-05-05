@@ -9,8 +9,8 @@ function SEO(props) {
 
   const title =
     props.title != null
-      ? `${meta.siteShortTitle} | ${props.title}`
-      : meta.siteTitle;
+      ? `${props.title} | ${meta.siteShortTitle}`
+      : meta.siteShortTitle;
   return (
     <Helmet>
       <meta charset="utf-8" />
@@ -54,7 +54,6 @@ const query = graphql`
   query SEOQuery {
     site {
       siteMetadata {
-        siteTitle
         siteShortTitle
         description
         author

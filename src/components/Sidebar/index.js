@@ -5,43 +5,90 @@ import { H1 } from "../Header";
 import Text from "../Text";
 import Box from "../Box";
 import { useStaticQuery, graphql } from "gatsby";
-
-const links = [{ name: "Installation", to: "/installation" }];
+import { makeAnchor } from "../../utils";
+import { sidebarWidth } from "../../styles";
 
 const StyledSidebar = styled(Box)`
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
   min-height: 100vh;
+  overflow-y: auto;
 `;
 
-const Item = props => (
+const PageHeading = props => (
   <Box py={1}>
-    <Text fontSize={3}>
-      <Link to={props.to}>{props.children}</Link>
+    <Text fontSize={4}>
+      <Link to={props.to} color={`${props.active ? "secondary" : "text"}`}>
+        {props.children}
+      </Link>
     </Text>
   </Box>
 );
 
+const SubHeading = props => (
+  <Box py={1} pl={2}>
+    <Text fontSize={2}>
+      <Link color="text" to={props.to}>
+        {props.children}
+      </Link>
+    </Text>
+  </Box>
+);
+
+const Section = props => (
+  <Box>
+    {props.headings
+      .filter(({ depth }) => depth <= (props.active ? 2 : 1))
+      .map(({ value, depth }, i) =>
+        depth === 1 ? (
+          <PageHeading
+            key={i}
+            text={value}
+            to={props.slug}
+            active={props.active}
+          >
+            {value}
+          </PageHeading>
+        ) : (
+          <SubHeading
+            key={i}
+            text={value}
+            to={`${props.slug}#${makeAnchor(value)}`}
+          >
+            {value}
+          </SubHeading>
+        ),
+      )}
+  </Box>
+);
 const Sidebar = () => {
   const data = useStaticQuery(query);
   const pages = data.allMdx.nodes;
+  const currentPath = window.location.pathname;
 
   return (
     <StyledSidebar
-      minWidth={[0, 280]}
+      minWidth={[0, sidebarWidth]}
       px={3}
       py={4}
       bg="primary"
       className="sidebar"
     >
       <Box>
-        <Text fontSize={5} fontWeight="bold">
-          <Link to="/" color="text">
-            Krill
-          </Link>
-        </Text>
+        <Section
+          slug="/"
+          headings={[{ value: "Introduction", depth: 1 }]}
+          active={currentPath === "/"}
+        />
         {pages.map(node => (
-          <Item key={node.fields.slug} to={node.fields.slug}>
-            {node.frontmatter.title}
-          </Item>
+          <Section
+            key={node.fields.slug}
+            slug={node.fields.slug}
+            headings={node.headings}
+            active={currentPath === node.fields.slug}
+          />
         ))}
       </Box>
     </StyledSidebar>
@@ -52,10 +99,11 @@ export default Sidebar;
 
 const query = graphql`
   query SidebarQuery {
-    allMdx {
+    allMdx(sort: { fields: [frontmatter___order], order: ASC }) {
       nodes {
-        frontmatter {
-          title
+        headings {
+          value
+          depth
         }
         fields {
           slug

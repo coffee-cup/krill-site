@@ -1,5 +1,6 @@
 ---
 title: "Syntax"
+order: 3
 ---
 
 # Syntax
@@ -35,12 +36,16 @@ x = 2
 x = 1 # Error: Variable `x` Already Bound
 ```
 
+## Blocks
+
+Blocks are a single expression, or multiple expression inside some curlies. They
+cannot be used by themselves, but are used in a few places throughout the syntax.
+
 ## Lambdas
 
 There are no top level functions in krill, only lambas. A lambda is a set of
 space separated parameters followed by an arrow `->`. The body of a function is
-a block. A block is an expression, or multiple expressions inside some curlies
-`{}`. For example, the following two lambdas are equivalent.
+a block. The following two lambdas are equivalent.
 
 ```
 add1 = a b -> a + b
@@ -104,4 +109,31 @@ for i in [1..5] { print i }
 # => 3
 # => 4
 # => 5
+```
+
+## Operators
+
+| Precedence  | Operator                         | Description                       | Associativity |
+|-------------|----------------------------------|-----------------------------------|---------------|
+| 1 (highest) | `.`                              | Function composition              | Right         |
+| 2           | `!`, `-`                         | Unary not and negate              |               |
+| 3           | `*`, `/`, `%`                    | Multiplication, division, modulus | Left          |
+| 4           | `++`                             | Concat                            | Left          |
+| 5           | `+`, `-`                         | Addition and subtraction          | Left          |
+| 6           | `==`, `!=`, `<=`, `>=`, `<`, `>` | Compare operators                 |               |
+| 7           | `&&`                             | Logical AND                       | Right         |
+| 7           | `||`                             | Logical OR                        | Right         |
+| 9 (lowest)  | `$`                              | Paren Avoider                     | Right         |
+
+The function compose operator composes together two functions.
+
+```hs
+(f . g) x == f (g x)
+```
+
+The `$` operator will evaluate the entire right side before the left. It is
+useful when you want to avoid parens.
+
+```hs
+f $ x + 1 = f (x + 1)
 ```

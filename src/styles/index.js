@@ -3,7 +3,9 @@ export const theme = {
     text: "#333",
     bg: "white",
     primary: "#ebebeb",
-    secondary: "hotpink",
+    secondary: "#4d3ae2",
   },
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
 };
+
+export const sidebarWidth = 250;

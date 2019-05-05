@@ -7,10 +7,16 @@ import { color } from "styled-system";
 const StyledGLink = styled(GLink)`
   ${color}
   text-decoration: none;
+  transition: opacity 150ms ease-in-out;
+
+  &:hover {
+    text-decoration: none;
+    opacity: 0.6;
+  }
 `;
 
 const Link = props => (
-  <StyledGLink color="text" {...props}>
+  <StyledGLink color="secondary" {...props}>
     <Text>{props.children}</Text>
   </StyledGLink>
 );
