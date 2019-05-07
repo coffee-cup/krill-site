@@ -12,7 +12,7 @@ const Docs = ({ data }) => {
   return (
     <Layout title={siteTitle}>
       <SEO title={data.mdx.frontmatter.title} />
-      <Box p={4}>
+      <Box>
         <MDXRenderer>{data.mdx.code.body}</MDXRenderer>
       </Box>
     </Layout>

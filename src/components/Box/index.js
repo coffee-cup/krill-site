@@ -11,6 +11,12 @@ import {
   alignItems,
   justifyContent,
   order,
+  position,
+  zIndex,
+  top,
+  right,
+  bottom,
+  left,
 } from "styled-system";
 
 const Box = styled.div(
@@ -29,6 +35,12 @@ const Box = styled.div(
   alignItems,
   justifyContent,
   order,
+  position,
+  zIndex,
+  top,
+  right,
+  bottom,
+  left,
 );
 
 export default Box;

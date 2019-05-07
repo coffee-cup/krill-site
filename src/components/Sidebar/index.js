@@ -6,7 +6,7 @@ import Box from "../Box";
 import Logo from "../Logo";
 import { useStaticQuery, graphql } from "gatsby";
 import { makeAnchor } from "../../utils";
-import { sidebarWidth } from "../../styles";
+import { sidebarWidth, forNarrowScreen } from "../../styles";
 
 const StyledSidebar = styled(Box)`
   position: fixed;
@@ -15,6 +15,11 @@ const StyledSidebar = styled(Box)`
   bottom: 0;
   min-height: 100vh;
   overflow-y: auto;
+  z-index: 9999;
+
+  transition: transform 250ms ease-out;
+
+  ${props => !props.isOpen && forNarrowScreen`transform: translate(-100%);`}
 `;
 
 const PageHeading = props => (
@@ -70,19 +75,19 @@ const LogoButton = () => (
   </Box>
 );
 
-const Sidebar = () => {
+const Sidebar = props => {
   const data = useStaticQuery(query);
   const pages = data.allMdx.nodes;
   const currentPath = window.location.pathname;
 
   return (
     <StyledSidebar
-      minWidth={[0, sidebarWidth]}
+      minWidth={[sidebarWidth]}
       px={3}
-      pt={4}
-      pb={4}
+      py={4}
       bg="primary"
       className="sidebar"
+      isOpen={props.isOpen}
     >
       <Box>
         <LogoButton />

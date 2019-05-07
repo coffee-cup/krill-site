@@ -23,7 +23,7 @@ const Home = ({ data }) => {
     <Layout title={siteTitle}>
       <SEO />
       <Box>
-        <Title mt={5}>Krill</Title>
+        <Title mt={4}>Krill</Title>
         <Box>
           <Text>
             Dynamic, curried, and minimal programming language. Find the

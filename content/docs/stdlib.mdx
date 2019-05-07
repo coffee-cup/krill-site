@@ -5,8 +5,9 @@ order: 4
 
 # Standard Library
 
-There is a standard library that is always loaded first. The library is small
-and can be found [here](https://github.com/coffee-cup/krill/blob/master/stdlib/core.kr).
+This section details all functions that are globally available in the language. Most
+of them are builtin to the compiler. Some are part of the [stdlib](https://github.com/coffee-cup/krill/blob/master/stdlib/core.kr) that
+is loaded first.
 
 ## print
 
@@ -20,11 +21,43 @@ print $ [1,2] ++ " hello"
 
 ## length
 
+Get the length of an array or string.
+
+```hs
+length :: [a] -> Number
+length [1,2,3] == 3
+length "hello" == 5
+```
+
 ## not
+
+The same as the logical not operator (`!`).
+
+```hs
+not :: Bool -> Bool
+not true == false
+not false == true
+```
 
 ## id
 
+The identity function.
+
+```hs
+id :: a -> a
+id 1 == 1
+id :hello = :hello
+```
+
 ## const
+
+Returns the first argument.
+
+```hs
+const :: a -> b -> a
+const 1 2 == 1
+const true false == true
+```
 
 ## map
 

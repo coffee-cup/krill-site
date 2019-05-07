@@ -1,42 +1,64 @@
 /*
+ Solarized Color Schemes originally by Ethan Schoonover
+ http://ethanschoonover.com/solarized
 
-Name:       Base16 Atelier Lakeside Light
-Author:     Bram de Haan (http://atelierbram.github.io/syntax-highlighting/atelier-schemes/lakeside/)
-
-Prism template by Bram de Haan (http://atelierbram.github.io/syntax-highlighting/prism/)
-Original Base16 color scheme by Chris Kempson (https://github.com/chriskempson/base16)
-
+ Ported for PrismJS by Hector Matos
+ Website: https://krakendev.io
+ Twitter Handle: https://twitter.com/allonsykraken)
 */
+
+/*
+SOLARIZED HEX
+--------- -------
+base03    #002b36
+base02    #073642
+base01    #586e75
+base00    #657b83
+base0     #839496
+base1     #93a1a1
+base2     #eee8d5
+base3     #fdf6e3
+yellow    #b58900
+orange    #cb4b16
+red       #dc322f
+magenta   #d33682
+violet    #6c71c4
+blue      #268bd2
+cyan      #2aa198
+green     #859900
+*/
+
 code[class*="language-"],
 pre[class*="language-"] {
-  font-family: Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", "Courier New", Courier, monospace;
-  font-size: 14px;
-  line-height: 1.375;
-  direction: ltr;
+  color: #657b83; /* base00 */
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  font-size: 1em;
   text-align: left;
   white-space: pre;
   word-spacing: normal;
   word-break: normal;
+  word-wrap: normal;
+
+  line-height: 1.5;
+
   -moz-tab-size: 4;
   -o-tab-size: 4;
   tab-size: 4;
+
   -webkit-hyphens: none;
+  -moz-hyphens: none;
   -ms-hyphens: none;
   hyphens: none;
-  background: #ebf8ff;
-  color: #516d7b;
 }
 
 pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
 code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
-  text-shadow: none;
-  background: #c1e4f6;
+  background: #073642; /* base02 */
 }
 
 pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
 code[class*="language-"]::selection, code[class*="language-"] ::selection {
-  text-shadow: none;
-  background: #c1e4f6;
+  background: #073642; /* base02 */
 }
 
 /* Code blocks */
@@ -44,6 +66,12 @@ pre[class*="language-"] {
   padding: 1em;
   margin: .5em 0;
   overflow: auto;
+  border-radius: 0.3em;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+  background-color: #fdf6e3; /* base3 */
 }
 
 /* Inline code */
@@ -56,110 +84,67 @@ pre[class*="language-"] {
 .token.prolog,
 .token.doctype,
 .token.cdata {
-  color: #7195a8;
+  color: #93a1a1; /* base1 */
 }
 
 .token.punctuation {
-  color: #516d7b;
+  color: #586e75; /* base01 */
 }
 
-.token.namespace {
+.namespace {
   opacity: .7;
 }
 
-.token.operator,
+.token.property,
+.token.tag,
 .token.boolean,
-.token.number {
-  color: #935c25;
-}
-
-.token.property {
-  color: #8a8a0f;
-}
-
-.token.tag {
-  color: #257fad;
-}
-
-.token.string {
-  color: #2d8f6f;
-}
-
-.token.selector {
-  color: #6b6bb8;
-}
-
-.token.attr-name {
-  color: #935c25;
-}
-
-.token.entity,
-.token.url,
-.language-css .token.string,
-.style .token.string {
-  color: #2d8f6f;
-}
-
-.token.attr-value,
-.token.keyword,
-.token.control,
-.token.directive,
-.token.unit {
-  color: #568c3b;
-}
-
-.token.statement,
-.token.regex,
-.token.atrule {
-  color: #2d8f6f;
-}
-
-.token.placeholder,
-.token.variable {
-  color: #257fad;
-}
-
+.token.number,
+.token.constant,
+.token.symbol,
 .token.deleted {
-  text-decoration: line-through;
+  color: #268bd2; /* blue */
 }
 
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.url,
 .token.inserted {
-  border-bottom: 1px dotted #161b1d;
-  text-decoration: none;
+  color: #2aa198; /* cyan */
 }
 
-.token.italic {
-  font-style: italic;
+.token.entity {
+  color: #657b83; /* base00 */
+  background: #eee8d5; /* base2 */
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+  color: #859900; /* green */
+}
+
+.token.function,
+.token.class-name {
+  color: #b58900; /* yellow */
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+  color: #cb4b16; /* orange */
 }
 
 .token.important,
 .token.bold {
   font-weight: bold;
 }
-
-.token.important {
-  color: #d22d72;
+.token.italic {
+  font-style: italic;
 }
 
 .token.entity {
   cursor: help;
-}
-
-pre > code.highlight {
-  outline: 0.4em solid #d22d72;
-  outline-offset: .4em;
-}
-
-.line-numbers .line-numbers-rows {
-  border-right-color: #c1e4f6 !important;
-}
-
-.line-numbers-rows > span:before {
-  color: #7ea2b4 !important;
-}
-
-.line-highlight {
-  background: rgba(22, 27, 29, 0.2) !important;
-  background: -webkit-linear-gradient(left, rgba(22, 27, 29, 0.2) 70%, rgba(22, 27, 29, 0)) !important;
-  background: linear-gradient(to right, rgba(22, 27, 29, 0.2) 70%, rgba(22, 27, 29, 0)) !important;
 }
