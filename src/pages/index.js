@@ -10,10 +10,11 @@ import Text from "../components/Text";
 import { Title } from "../components/Header";
 
 const frontExample = `
-odd = x -> x % 2 != 0
-fact = n -> if n == 0 then 1 else n * fact (n - 1)
-filter (not . odd) $ map fact [0..5]
-# => [2,6,24,120]
+even = x -> x % 2 == 0
+square = x -> x * x
+sumOddSquares = sum . filter (not . even) . map square
+sumOddSquares [1..100]
+# => 166650
 `;
 
 const Home = ({ data }) => {
@@ -28,11 +29,11 @@ const Home = ({ data }) => {
           <Text>
             Dynamic, curried, and minimal programming language. Find the
             implementation on{" "}
+            <Link as="a" href="https://github.com/coffee-cup/krill">
+              Github
+            </Link>
+            .
           </Text>
-          <Link as="a" href="https://github.com/coffee-cup/krill">
-            Github
-          </Link>
-          .
           <Code language="haskell" codeString={frontExample} />
           <Text>
             Krill was created as an experiement to learn about programming

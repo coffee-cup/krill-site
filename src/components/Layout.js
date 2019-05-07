@@ -33,8 +33,8 @@ const Content = styled.div`
   margin: 0 auto;
 `;
 
-// ${forWideScreen`width: calc(100vw - ${sidebarWidth + 64}px);`}
 const ContentWrapper = styled(Box)`
+  ${forWideScreen`width: calc(100vw - ${sidebarWidth}px);`}
   margin-left: ${sidebarWidth}px;
 
   transition: margin-left: 250ms ease-out;

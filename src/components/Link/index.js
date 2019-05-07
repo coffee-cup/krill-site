@@ -17,7 +17,7 @@ const StyledGLink = styled(GLink)`
 
 const Link = props => (
   <StyledGLink color="secondary" {...props}>
-    <Text>{props.children}</Text>
+    <Text as="span">{props.children}</Text>
   </StyledGLink>
 );
 
