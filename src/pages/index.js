@@ -4,7 +4,7 @@ import { graphql } from "gatsby";
 import SEO from "../components/SEO";
 import Layout from "../components/Layout";
 import Box from "../components/Box";
-import Link from "../components/Link";
+import Link, { ExternalLink } from "../components/Link";
 import Code from "../components/Code";
 import Text from "../components/Text";
 import { Title } from "../components/Header";
@@ -29,9 +29,9 @@ const Home = ({ data }) => {
           <Text>
             Dynamic, curried, and minimal programming language. Find the
             implementation on{" "}
-            <Link as="a" href="https://github.com/coffee-cup/krill">
+            <ExternalLink href="https://github.com/coffee-cup/krill">
               Github
-            </Link>
+            </ExternalLink>
             .
           </Text>
           <Code language="haskell" codeString={frontExample} />

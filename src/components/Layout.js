@@ -5,7 +5,7 @@ import Sidebar from "../components/Sidebar";
 import Text from "../components/Text";
 import Hamburger from "../components/Hamburger";
 import styled from "styled-components";
-import Link from "../components/Link";
+import { ExternalLink } from "../components/Link";
 import { H1, H2, H3 } from "../components/Header";
 import { MDXProvider } from "@mdx-js/react";
 import { ThemeProvider, createGlobalStyle } from "styled-components";
@@ -23,7 +23,7 @@ const components = {
   h1: H1,
   h2: H2,
   h3: H3,
-  a: Link,
+  a: ExternalLink,
 };
 
 const Content = styled.div`

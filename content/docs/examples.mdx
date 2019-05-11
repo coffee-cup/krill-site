@@ -1,0 +1,39 @@
+---
+title: "Examples"
+order: 4
+---
+
+# Examples
+
+Here you will find some example krill programs.
+
+## Get the date and time as numbers
+
+```hs
+(map toNumber . split "-" . date) ()
+# => [2019,5,11]
+
+(map toNumber . split ":" . time) ()
+# => [17,40]
+```
+
+## File I/O
+
+```hs
+writeFile "/var/tmp/foo" "hello world"
+
+readFile "/var/tmp/foo"
+# => "hello world"
+
+appendFile "/var/tmp/foo" "\nhow are you?"
+
+readFile "/var/tmp/foo"
+# => hello world
+# => how are you?
+```
+
+
+## Factorial
+
+## Fibonacci
+

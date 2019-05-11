@@ -1,13 +1,19 @@
 ---
 title: 
-order: 4
+order: 5
 ---
 
 # Standard Library
 
-This section details all functions that are globally available in the language. Most
-of them are builtin to the compiler. Some are part of the [stdlib](https://github.com/coffee-cup/krill/blob/master/stdlib/core.kr) that
-is loaded first.
+This section details all functions that are globally available in the language.
+Most of them are builtin to the compiler. Some are part of the
+[stdlib](https://github.com/coffee-cup/krill/blob/master/stdlib/core.kr) that is
+loaded first.
+
+The Krill standard library is data last. This means that the main data you pass
+to a function will always be the last argument. This allows you to more easily
+create complex functions by composing together smaller functions, and then
+passing in your data last.
 
 ## print
 
@@ -15,13 +21,13 @@ Print the argument to standard out.
 
 ```hs
 print :: a -> ()
-print $ [1,2] ++ " hello"
-# => [1,2] hello
+print "Hello, World!"
+# => Hello, World!
 ```
 
 ## length
 
-Get the length of an array or string.
+Get the length of a list or string.
 
 ```hs
 length :: [a] -> Number
@@ -61,65 +67,312 @@ const true false == true
 
 ## map
 
+Apply a function to every element of a list and return the result.
+
+```hs
+map :: (a -> b) -> [a] -> [b]
+map (x -> x * x) [1,2,3]
+# => [1,4,9]
+```
+
 ## foldl
+
+Combine elements of a list by applying a function over the elements from
+left-to-right.
+
+```hs
+foldl :: (b -> a -> b) -> b -> [a] -> [b]
+foldl (acc current -> acc - current) 0 [1,2,3]
+# => -6
+```
 
 ## foldr
 
+Combine elements of a list by applying a function over the elements from
+right-to-left.
+
+```hs
+foldr :: (b -> a -> b) -> b -> [a] -> [b]
+foldr (acc current -> acc - current) 0 [1,2,3]
+# => 2
+```
+
 ## reduce
+
+Alias for `foldl`.
 
 ## filter
 
+Return new list of elements that pass a predicate.
+
+```hs
+filter :: (a -> Bool) -> [a] -> [a]
+filter (x -> x % 2 == 0) [1,2,3,4,5]
+# => [2,4]
+```
+
 ## sum
+
+Sum all the elements of a list.
+
+```hs
+sum :: [Number] -> Number
+sum [1,2,3]
+# => 6
+```
+
+## min
+
+Return the min of both arguments.
+
+```hs
+min :: Number -> Number -> Number
+min 1 2 == 1
+```
+
+## max
+
+Return the max of both arguments.
+
+```hs
+max :: Number -> Number -> Number
+max 1 2 == 2
+```
 
 ## flatten
 
+Recursively flattens a list.
+
+```hs
+flatten :: [a] -> [a]
+flatten [[1,2,3], [[1,2], [1], 2], []]
+# => [1,2,3,1,2,1,2]
+```
+
 ## split
+
+Split a string on a delimiter.
+
+```hs
+split :: String -> String -> [String]
+split " " "this is some text"
+# => ["this", "is", "some", "text"]
+```
 
 ## trim
 
+Remove leading and trailing whitespace.
+
+```hs
+trim :: String -> String
+trim "\n  Hello, World!     " == "Hello, World!"
+```
+
 ## lines
+
+Split input string on all newlines.
+
+```hs
+lines :: String -> [String]
+lines "hello\nworld" == ["hello", "world"]
+```
 
 ## words
 
+Split input string on all word breaks.
+
+```hs
+words :: String -> [String]
+words "  hello    world" == ["hello", "world"]
+```
+
 ## toNumber
+
+Try to convert input to a number. Throws an error if it cannot.
+
+```hs
+toNumber :: a -> Bool
+toNumber "3" == 3
+toNumber "hello"
+# => Error: Could not parse "hello" to a number
+```
 
 ## toString
 
+Convert input to a string.
+
+```hs
+toString :: a -> String
+toString [1,2] == "[1,2]"
+toString true == "true"
+```
+
 ## isList
+
+Check if input is a number
+
+```hs
+isList :: a -> Bool
+isList [1,2] == true
+isList 1 == false
+```
 
 ## isNumber
 
+Check if input is a number.
+
+```hs
+isNumber :: a -> Bool
+isNumber "hello" == false
+isNumber 1 == true
+```
+
 ## isString
+
+Check if input is a string.
+
+```hs
+isString :: a -> Bool
+isString "hello" == true
+isString 1 == false
+```
 
 ## isBool
 
+Check if input is a bool.
+
+```hs
+isBool :: a -> Bool
+isBool true == true
+isBool "hello" == false
+```
+
 ## isAtom
+
+Check if input is an atom.
+
+```hs
+isBool :: a -> Bool
+isBool :hello == true
+isBool "hello" == false
+```
 
 ## date
 
+Get the current date in "year-month-day" format.
+
+```hs
+date :: _ -> String
+date () == "2019-5-11"
+```
+
 ## time
+
+Get the current time in "hour:minute" format.
+
+```hs
+time :: _ -> String
+time () == "17:40"
+```
 
 ## readFile
 
+Read a file from disk. Throw and error if file not found.
+
+```hs
+readFile :: String -> String
+```
+
 ## writeFile
+
+Write a string to a file on disk. The file is created if it doesn't exist.
+
+```hs
+writeFile :: String -> String -> ()
+```
 
 ## appendFile
 
+Append to a file on disk. The file is created if it doesn't exist.
+
+```hs
+writeFile :: String -> String -> ()
+```
+
 ## pow
 
-## sqrt
+Raise the first argument to the power of the second.
+
+```hs
+pow 2 3 == 8
+```
 
 ## root
 
+Get the nth root of an argument.
+
+```hs
+root 3 8 == 2
+```
+
+## sqrt
+
+Get the square root of the argument.
+
+```hs
+sqrt 25 == 5
+```
+
 ## floor
+
+Floor the input.
+
+```hs
+floor 2.6 == 2
+```
 
 ## ceil
 
+Ceil the input.
+
+```hs
+ceil 2.2 == 3
+```
+
 ## sin
+
+Get the sin of the input.
+
+```hs
+sin 0 == 0
+```
 
 ## cos
 
+Get the cos of the input.
+
+```hs
+cos 0 == 1
+```
+
 ## throwError
 
+Throw an error with input as message. This cannot be caught.
+
+```hs
+throwError "something bad!"
+# => Error: something bad!
+```
+
 ## assert
+
+Compare both inputs and throw an error if they are not equal.
+
+```hs
+assert 2 2
+# => ()
+
+assert 2 3
+# => Error: 2 does not equal 3
+```
 

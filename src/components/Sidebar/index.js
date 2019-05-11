@@ -24,7 +24,7 @@ const StyledSidebar = styled(Box)`
 
 const PageHeading = props => (
   <Box py={1}>
-    <Text fontSize={4} fontWeight={600}>
+    <Text fontSize={3} fontWeight={600}>
       <Link to={props.to} color={`${props.active ? "secondary" : "text"}`}>
         {props.children}
       </Link>
@@ -70,7 +70,7 @@ const Section = props => (
 );
 
 const LogoButton = () => (
-  <Box display="flex" alignItems="center">
+  <Box display="flex" alignItems="center" mt={1} mb={3} className="logo">
     <Logo />
   </Box>
 );

@@ -22,3 +22,5 @@ const Link = props => (
 );
 
 export default Link;
+
+export const ExternalLink = props => <Link as="a" {...props} />;
