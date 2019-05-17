@@ -416,3 +416,17 @@ assert 2 3
 # => Error: 2 does not equal 3
 ```
 
+## args
+
+Special variable that contains all arguments passed to krill. This is only
+non-empty when running a file.
+
+```hs
+# src/file.kr
+print args
+```
+
+```
+krill src/file.kr hello world
+["/src/file.kr", "hello", "world"]
+```
