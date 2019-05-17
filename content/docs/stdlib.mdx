@@ -151,12 +151,34 @@ flatten [[1,2,3], [[1,2], [1], 2], []]
 
 ## split
 
-Split a string on a delimiter.
+Split a string on a delimiter. Splitting on the empty string breaks string into
+list of character.
 
 ```hs
 split :: String -> String -> [String]
-split " " "this is some text"
-# => ["this", "is", "some", "text"]
+split " " "this is some text" = ["this", "is", "some", "text"]
+split "" "hello" == ['h', 'e', 'l', 'l', 'o']
+```
+
+## intersperse
+
+Insert a value in between every element of a list.
+
+```hs
+intersperse :: a -> [b] -> [c]
+intersperse "," ["hello", "world"] == ["hello", "," ,"world"]
+intersperse 0 [1, 2, 3] == [1, 0, 2, 0, 3]
+```
+
+## join
+
+Concat every element of a list together separated by a delimiter. The result is
+always a string.
+
+```hs
+join :: a -> [b] -> String
+join " " ["hello", "world"] == "hello world"
+join 0 [1, 2, 3] == "10203"
 ```
 
 ## trim
@@ -184,6 +206,24 @@ Split input string on all word breaks.
 ```hs
 words :: String -> [String]
 words "  hello    world" == ["hello", "world"]
+```
+
+## charToCode
+
+Get the ascii code of a character.
+
+```hs
+charToCode :: Char -> Number
+charToCode 'a' == 97
+```
+
+## codeToChar
+
+Convert ascii value to a character. The input must be an integer between 0 and 127.
+
+```hs
+codeToChar :: Number -> Char
+codeToChar 97 == 'a'
 ```
 
 ## toNumber

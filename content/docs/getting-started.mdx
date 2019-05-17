@@ -7,7 +7,7 @@ order: 1
 
 If you are on macOS, install Krill with [Homebrew](https://brew.sh/). 
 
-```sh
+```
 brew install krill
 ```
 
@@ -18,23 +18,38 @@ You can create a [hello world
 program](https://en.wikipedia.org/wiki/%22Hello,_World!%22_program) by creating
 a file on disk with the following contents.
 
-```hs
+```shell
 print "Hello, World!"
 ```
 
 Run the file with `krill file.kr`. You should see the text output to the
-console. Alternatively you can type the command into the Repl.
+console.
 
-```sh
+## Using the repl
+
+You can start a Krill repl by running the `krill` command with no arguments.
+
+```shell
 $ krill
 
  |  ._ o | |
  |< |  | | |
 
  Krill 0.1.0
+```
 
+In the repl you can type single line expressions which are evaluated
+immediately. Try it out with hello world.
+
+```
 λ print "Hello, World!"
 Hello, World!
+```
+
+Repl commands are prefixed with the dot `.`. For example, to see the help run,
+
+```
+λ .help
 ```
 
 Head to the [examples page](/examples) to learn more!

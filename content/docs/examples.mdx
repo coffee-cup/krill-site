@@ -7,7 +7,7 @@ order: 4
 
 Here you will find some example krill programs.
 
-## Get the date and time as numbers
+## Date and time
 
 ```hs
 (map toNumber . split "-" . date) ()
@@ -35,5 +35,21 @@ readFile "/var/tmp/foo"
 
 ## Factorial
 
+```hs
+fac = n -> {
+  if n == 0 then 1
+  else n * (fac $ n - 1)
+}
+```
+
 ## Fibonacci
 
+```hs
+fib = n -> {
+  if n == 0 then 0
+  else {
+   if n == 1 then 1
+   else fib (n - 1) + fib (n - 2)
+  }
+}
+```

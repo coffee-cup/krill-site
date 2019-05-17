@@ -33,7 +33,7 @@ const PageHeading = props => (
 );
 
 const SubHeading = props => (
-  <Box py={1} pl={2}>
+  <Box py={0} pl={2}>
     <Text fontSize={2}>
       <Link color="text" to={props.to}>
         {props.children}
