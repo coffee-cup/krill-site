@@ -78,7 +78,7 @@ const LogoButton = () => (
 const Sidebar = props => {
   const data = useStaticQuery(query);
   const pages = data.allMdx.nodes;
-  const currentPath = window.location.pathname;
+  const currentPath = props.location.pathname;
 
   return (
     <StyledSidebar

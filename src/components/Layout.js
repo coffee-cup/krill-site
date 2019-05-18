@@ -10,6 +10,7 @@ import { H1, H2, H3 } from "../components/Header";
 import { MDXProvider } from "@mdx-js/react";
 import { ThemeProvider, createGlobalStyle } from "styled-components";
 import { theme, sidebarWidth, forNarrowScreen, forWideScreen } from "../styles";
+import { Location } from "@reach/router";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -75,36 +76,39 @@ const SidebarButton = ({ onClick, ...props }) => (
 );
 
 const Layout = ({ children }) => {
-  // only relavant on mobile
   const [isSidebarOpen, setSidebarOpen] = React.useState(false);
 
   return (
-    <MDXProvider components={components}>
-      <ThemeProvider theme={theme}>
-        <>
-          <GlobalStyle />
-          <Box display="flex" className="wrapper">
-            <Sidebar isOpen={isSidebarOpen} />
+    <Location>
+      {({ location }) => (
+        <MDXProvider components={components}>
+          <ThemeProvider theme={theme}>
+            <>
+              <GlobalStyle />
+              <Box display="flex" className="wrapper">
+                <Sidebar isOpen={isSidebarOpen} location={location} />
 
-            <Box display="flex" flexDirection="column">
-              <SidebarButton
-                px={[3, 3, 4]}
-                mt={3}
-                onClick={() => setSidebarOpen(true)}
-              />
-              <ContentWrapper mt={[-2, 4]} px={[3, 3, 4]}>
-                <Content className="content">{children}</Content>
-              </ContentWrapper>
-            </Box>
-            <Overlay
-              className="overlay"
-              isOpen={isSidebarOpen}
-              onClick={() => setSidebarOpen(false)}
-            />
-          </Box>
-        </>
-      </ThemeProvider>
-    </MDXProvider>
+                <Box display="flex" flexDirection="column">
+                  <SidebarButton
+                    px={[3, 3, 4]}
+                    mt={3}
+                    onClick={() => setSidebarOpen(true)}
+                  />
+                  <ContentWrapper mt={[-2, 4]} px={[3, 3, 4]}>
+                    <Content className="content">{children}</Content>
+                  </ContentWrapper>
+                </Box>
+                <Overlay
+                  className="overlay"
+                  isOpen={isSidebarOpen}
+                  onClick={() => setSidebarOpen(false)}
+                />
+              </Box>
+            </>
+          </ThemeProvider>
+        </MDXProvider>
+      )}
+    </Location>
   );
 };
 
