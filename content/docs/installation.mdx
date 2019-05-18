@@ -5,9 +5,22 @@ order: 2
 
 # Installation
 
+If you are on macOS, install Krill with [Homebrew](https://brew.sh/). 
+
+```
+brew tap coffee-cup/krill
+brew install krill
+```
+
+If you are on another platform, [download the
+binary](https://github.com/coffee-cup/krill/releases) or build it from
+source.
+
+## Building from source
+
 Build it yourself with [Haskell](https://www.haskell.org/).
 
-1.  Install [Stack](https://docs.haskellstack.org/en/stable/README/), which we will use to compile the Haskell code.
+1. Install [Stack](https://docs.haskellstack.org/en/stable/README/), which we will use to compile the Haskell code.
 2.  Clone the repository and `cd` into the directory.
 3.  Run `stack setup` to download the correct version of GHC.
 4.  Run `stack install --local-bin-path=out/build` to build the application.
