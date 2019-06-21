@@ -6,16 +6,6 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: "UA-38403801-2",
-        // Defines where to place the tracking script - `true` in the head and `false` in the body
-        head: false,
-        anonymize: true,
-        respectDNT: true,
-      },
-    },
-    {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/content/docs`,
@@ -69,7 +59,10 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        //trackingId: `ADD YOUR TRACKING ID HERE`,
+        trackingId: "UA-62861404-2",
+        head: false,
+        anonymize: true,
+        respectDNT: true,
       },
     },
     {
@@ -84,7 +77,7 @@ module.exports = {
         icon: `content/assets/icon.png`,
       },
     },
-    `gatsby-plugin-offline`,
+    `gatsby-plugin-remove-serviceworker`,
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-plugin-typography`,
