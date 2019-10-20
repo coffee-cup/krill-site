@@ -3,6 +3,7 @@ import Box from "../components/Box";
 import PropTypes from "prop-types";
 import Sidebar from "../components/Sidebar";
 import Text from "../components/Text";
+import Footer from "../components/Footer";
 import Hamburger from "../components/Hamburger";
 import styled from "styled-components";
 import { ExternalLink } from "../components/Link";
@@ -29,9 +30,10 @@ const components = {
 
 const Content = styled.div`
   width: 100%;
-  min-height: 100%;
+  min-height: 100vh;
   max-width: 70ch;
   margin: 0 auto;
+  margin-bottom: 2rem;
 `;
 
 const ContentWrapper = styled(Box)`
@@ -85,7 +87,7 @@ const Layout = ({ children }) => {
           <ThemeProvider theme={theme}>
             <>
               <GlobalStyle />
-              <Box display="flex" className="wrapper">
+              <Box display="flex" flexDirection="column" className="wrapper">
                 <Sidebar isOpen={isSidebarOpen} location={location} />
 
                 <Box display="flex" flexDirection="column">
@@ -96,8 +98,11 @@ const Layout = ({ children }) => {
                   />
                   <ContentWrapper mt={[-2, 4]} px={[3, 3, 4]}>
                     <Content className="content">{children}</Content>
+
+                    <Footer />
                   </ContentWrapper>
                 </Box>
+
                 <Overlay
                   className="overlay"
                   isOpen={isSidebarOpen}
