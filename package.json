@@ -17,6 +17,9 @@
   "keywords": [
     "gatsby"
   ],
+  "engines": {
+    "node": ">=11"
+  },
   "scripts": {
     "dev": "gatsby develop",
     "lint": "eslint --ext .js,.jsx --ignore-pattern public .",
