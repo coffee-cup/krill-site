@@ -78,6 +78,7 @@ module.exports = {
         icon: `content/assets/icon.png`,
       },
     },
+    `gatsby-plugin-simple-analytics`,
     `gatsby-plugin-remove-serviceworker`,
     `gatsby-plugin-react-helmet`,
     {

@@ -5357,6 +5357,11 @@ gatsby-plugin-sharp@^2.0.6:
     sharp "^0.21.0"
     svgo "^0.7.2"
 
+gatsby-plugin-simple-analytics@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-simple-analytics/-/gatsby-plugin-simple-analytics-1.0.1.tgz#3f4f24c69bd3f0416248bfafbd97b958affe68e4"
+  integrity sha512-jUYiPCC8VPoiXMUDA+TZy+CxxeJ7CHMfF5k6SoCacCA55QB5RrprIbdJAHIdj+RpT8Zfx8YFSDC4n1S4R3/ikg==
+
 gatsby-plugin-styled-components@^3.1.2:
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-styled-components/-/gatsby-plugin-styled-components-3.1.2.tgz#1f8ab130e2fdc02fbc8b158b237e7f620d15c2a9"
