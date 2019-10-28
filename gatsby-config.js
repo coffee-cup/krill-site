@@ -78,7 +78,12 @@ module.exports = {
         icon: `content/assets/icon.png`,
       },
     },
-    `gatsby-plugin-simple-analytics`,
+    {
+      resolve: `gatsby-plugin-simple-analytics`,
+      options: {
+        domain: "hello.jakerunzer.com",
+      },
+    },
     `gatsby-plugin-remove-serviceworker`,
     `gatsby-plugin-react-helmet`,
     {
