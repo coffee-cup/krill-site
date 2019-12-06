@@ -53,3 +53,22 @@ fib = n -> {
   }
 }
 ```
+
+## FizzBuzz
+
+```hs
+div3 = i -> i % 3 == 0
+div5 = i -> i % 5 == 0
+div35 = i -> (div3 i) && (div5 i)
+
+for i in [1..100] {
+  if div35 i then print "FizzBuzz"
+  else {
+    if div3 i then print "Fizz"
+    else {
+      if div5 i then print "Buzz"
+      else print i
+    }
+  }
+}
+```
