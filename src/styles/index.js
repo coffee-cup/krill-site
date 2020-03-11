@@ -26,4 +26,4 @@ export const forWideScreen = (first, ...interpolations) => css`
   }
 `;
 
-export const sidebarWidth = 250;
+export const sidebarWidth = 200;

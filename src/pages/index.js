@@ -36,8 +36,8 @@ const Home = ({ data }) => {
           </Text>
           <Code language="haskell" codeString={frontExample} />
           <Text>
-            Krill was created as an experiement to learn about programming
-            language design. Head to{" "}
+            Krill is fully functionaly and allows you to write small and concise
+            programs in a functional style. Head to{" "}
             <Link to="/getting-started/">getting started</Link> to learn more.
           </Text>
         </Box>

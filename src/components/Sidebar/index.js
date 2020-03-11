@@ -23,9 +23,14 @@ const StyledSidebar = styled(Box)`
 `;
 
 const PageHeading = props => (
-  <Box py={1}>
-    <Text fontSize={3} fontWeight={600}>
-      <Link to={props.to} color={`${props.active ? "secondary" : "text"}`}>
+  <Box pt={1} pb={0}>
+    <Text
+      fontSize={2}
+      fontWeight={400}
+      mb={0}
+      style={{ marginBottom: "0.25rem" }}
+    >
+      <Link to={props.to} color={`${props.active ? "secondary" : "#3e3e3e"}`}>
         {props.children}
       </Link>
     </Text>
@@ -33,8 +38,8 @@ const PageHeading = props => (
 );
 
 const SubHeading = props => (
-  <Box py={0} pl={2}>
-    <Text fontSize={2}>
+  <Box py={0} pl={3}>
+    <Text fontSize={1} style={{ marginBottom: "0.5rem" }}>
       <Link color="text" to={props.to}>
         {props.children}
       </Link>
@@ -84,7 +89,8 @@ const Sidebar = props => {
     <StyledSidebar
       minWidth={[sidebarWidth]}
       px={3}
-      py={4}
+      pt={5}
+      pb={4}
       bg="primary"
       className="sidebar"
       isOpen={props.isOpen}
